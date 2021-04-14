@@ -1,0 +1,69 @@
+import com.romasks.buildsrc.BuildConfig
+import com.romasks.buildsrc.Libs
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'koin'
+}
+
+android {
+    compileSdkVersion BuildConfig.COMPILE_SDK_VERSION
+
+    defaultConfig {
+        applicationId BuildConfig.APPLICATION_ID
+        minSdkVersion BuildConfig.MIN_SDK_VERSION
+        targetSdkVersion BuildConfig.TARGET_SDK_VERSION
+
+        versionCode BuildConfig.VERSION_CODE
+        versionName BuildConfig.VERSION_NAME
+
+        testInstrumentationRunner BuildConfig.TEST_INSTRUMENTATION_RUNNER
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    // Android
+    implementation Libs.Android.APP_COMPAT
+    implementation Libs.Android.CORE_KTX
+    implementation Libs.Android.KOTLIN_STDLIB
+
+    // Async
+    // RxJava
+
+    // DI
+    implementation Libs.DI.KOIN_ANDROID
+    implementation Libs.DI.KOIN_ANDROID_SCOPE
+    implementation Libs.DI.KOIN_ANDROID_VIEWMODEL
+
+    // Network
+    // Retrofit
+
+    // Testing
+    testImplementation Libs.Testing.JUNIT
+    androidTestImplementation Libs.Testing.JUNIT_EXT
+    androidTestImplementation Libs.Testing.ESPRESSO
+
+    // UI
+    implementation Libs.UI.MATERIAL
+    implementation Libs.UI.CONSTRAINT_LAYOUT
+    implementation Libs.UI.LOTTIE
+    // Glide
+
+}
