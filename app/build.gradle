@@ -55,6 +55,9 @@ dependencies {
     implementation Libs.DI.KOIN_ANDROID_SCOPE
     implementation Libs.DI.KOIN_ANDROID_VIEWMODEL
 
+    // Navigation
+    implementation Libs.Navigation.CICERONE
+
     // Network
     // Retrofit
 

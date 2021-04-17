@@ -13,6 +13,10 @@ object Versions {
         const val KOIN = "2.2.2"
     }
 
+    object Navigation {
+        const val CICERONE = "6.6"
+    }
+
     object Testing {
         const val ESPRESSO = "3.3.0"
         const val JUNIT = "4.13.2"

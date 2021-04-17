@@ -17,6 +17,10 @@ object Libs {
         const val KOIN_GRADLE_PLUGIN = "org.koin:koin-gradle-plugin:${Versions.DI.KOIN}"
     }
 
+    object Navigation {
+        const val CICERONE = "com.github.terrakok:cicerone:${Versions.Navigation.CICERONE}"
+    }
+
     object Testing {
         const val ESPRESSO = "androidx.test.espresso:espresso-core:${Versions.Testing.ESPRESSO}"
         const val JUNIT = "junit:junit:${Versions.Testing.JUNIT}"
