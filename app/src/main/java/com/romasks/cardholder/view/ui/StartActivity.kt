@@ -4,16 +4,18 @@ import android.animation.Animator
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.romasks.cardholder.R
-import kotlinx.android.synthetic.main.activity_start.*
+import com.romasks.cardholder.databinding.ActivityStartBinding
 
 class StartActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityStartBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_start)
+        binding = ActivityStartBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        splash_anim.addAnimatorListener(object : Animator.AnimatorListener {
+        binding.splashAnim.addAnimatorListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(animation: Animator?) {
             }
 
@@ -31,6 +33,6 @@ class StartActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        splash_anim.playAnimation()
+        binding.splashAnim.playAnimation()
     }
 }

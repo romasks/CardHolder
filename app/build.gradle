@@ -4,7 +4,7 @@ import com.romasks.buildsrc.Libs
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
     id 'koin'
 }
 
@@ -34,6 +34,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 
