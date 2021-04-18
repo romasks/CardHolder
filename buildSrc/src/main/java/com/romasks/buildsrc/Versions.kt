@@ -14,7 +14,7 @@ object Versions {
     }
 
     object Navigation {
-        const val CICERONE = "6.6"
+        const val NAVIGATION = "2.3.5"
     }
 
     object Testing {

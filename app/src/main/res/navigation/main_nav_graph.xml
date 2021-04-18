@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/nav_cards">
+
+    <fragment
+        android:id="@+id/nav_cards"
+        android:name="com.romasks.cardholder.view.ui.CardsFragment"
+        android:label="@string/label_cards"
+        tools:layout="@layout/fragment_cards" />
+
+    <fragment
+        android:id="@+id/nav_add_card"
+        android:name="com.romasks.cardholder.view.ui.AddCardFragment"
+        android:label="@string/label_add_card"
+        tools:layout="@layout/fragment_add_card" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.romasks.cardholder.view.ui.SettingsFragment"
+        android:label="@string/label_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

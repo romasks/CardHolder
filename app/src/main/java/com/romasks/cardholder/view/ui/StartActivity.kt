@@ -20,7 +20,10 @@ class StartActivity : AppCompatActivity() {
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-                startActivity(Intent(this@StartActivity, MainActivity::class.java))
+                Intent(this@StartActivity, MainActivity::class.java).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    startActivity(this)
+                }
             }
 
             override fun onAnimationCancel(animation: Animator?) {

@@ -18,7 +18,9 @@ object Libs {
     }
 
     object Navigation {
-        const val CICERONE = "com.github.terrakok:cicerone:${Versions.Navigation.CICERONE}"
+        const val NAVIGATION_FRAGMENT = "androidx.navigation:navigation-fragment-ktx:${Versions.Navigation.NAVIGATION}"
+        const val NAVIGATION_UI = "androidx.navigation:navigation-ui-ktx:${Versions.Navigation.NAVIGATION}"
+        const val NAVIGATION_SAVE_ARGS = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.Navigation.NAVIGATION}"
     }
 
     object Testing {
