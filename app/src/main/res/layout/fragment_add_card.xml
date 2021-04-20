@@ -5,9 +5,19 @@
     android:layout_height="match_parent"
     tools:context=".view.ui.AddCardFragment">
 
-    <TextView
+    <ImageView
+        android:id="@+id/iv_barcode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="32dp"
+        tools:src="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/tv_barcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_barcode"
         android:layout_centerInParent="true"
         android:text="@string/label_add_card" />
 

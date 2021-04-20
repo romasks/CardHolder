@@ -69,9 +69,10 @@ dependencies {
     androidTestImplementation Libs.Testing.ESPRESSO
 
     // UI
-    implementation Libs.UI.MATERIAL
     implementation Libs.UI.CONSTRAINT_LAYOUT
     implementation Libs.UI.LOTTIE
+    implementation Libs.UI.MATERIAL
+    implementation Libs.UI.ZXING
     // Glide
 
 }

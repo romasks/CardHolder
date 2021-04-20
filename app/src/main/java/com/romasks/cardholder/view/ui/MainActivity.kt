@@ -40,4 +40,9 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, bottomNavBarConfig)
         binding.bottomNavMenu.setupWithNavController(navController)
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
 }

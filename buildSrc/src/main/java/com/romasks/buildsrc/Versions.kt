@@ -27,5 +27,6 @@ object Versions {
         const val CONSTRAINT_LAYOUT = "2.0.4"
         const val LOTTIE = "3.7.0"
         const val MATERIAL = "1.3.0"
+        const val ZXING = "4.2.0"
     }
 }
