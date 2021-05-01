@@ -30,7 +30,9 @@ object Libs {
     }
 
     object UI {
+        const val CARD_VIEW = "androidx.cardview:cardview:${Versions.UI.CARD_VIEW}"
         const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.UI.CONSTRAINT_LAYOUT}"
+        const val GLIDE = "com.github.bumptech.glide:glide:${Versions.UI.GLIDE}"
         const val LOTTIE = "com.airbnb.android:lottie:${Versions.UI.LOTTIE}"
         const val MATERIAL = "com.google.android.material:material:${Versions.UI.MATERIAL}"
         const val ZXING = "com.journeyapps:zxing-android-embedded:${Versions.UI.ZXING}"

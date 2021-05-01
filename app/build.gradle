@@ -70,12 +70,11 @@ dependencies {
     androidTestImplementation Libs.Testing.ESPRESSO
 
     // UI
+    implementation Libs.UI.CARD_VIEW
     implementation Libs.UI.CONSTRAINT_LAYOUT
+    implementation Libs.UI.GLIDE
     implementation Libs.UI.LOTTIE
     implementation Libs.UI.MATERIAL
     implementation Libs.UI.ZXING
-    // Glide
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    implementation 'androidx.cardview:cardview:1.0.0'
 
 }

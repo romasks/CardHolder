@@ -24,7 +24,9 @@ object Versions {
     }
 
     object UI {
+        const val CARD_VIEW = "1.0.0"
         const val CONSTRAINT_LAYOUT = "2.0.4"
+        const val GLIDE = "4.11.0"
         const val LOTTIE = "3.7.0"
         const val MATERIAL = "1.3.0"
         const val ZXING = "4.2.0"
