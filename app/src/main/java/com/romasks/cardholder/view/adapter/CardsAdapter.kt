@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.romasks.cardholder.data.datasource.db.entities.Card
 import com.romasks.cardholder.databinding.ItemCardBinding
-import com.romasks.cardholder.domain.entity.Card
 
 class CardsAdapter(cards: List<Card>) : RecyclerView.Adapter<CardsAdapter.CardHolder>() {
 
@@ -40,7 +40,7 @@ class CardsAdapter(cards: List<Card>) : RecyclerView.Adapter<CardsAdapter.CardHo
                         ImageUtils.getTransformedBitmap(root.resources, card.imageRes)
                     )*/
                 } else {
-                    Glide.with(root).load(card.imageRes).into(cardImage)
+                    Glide.with(root).load(card.image).into(cardImage)
 //                    cardImage.setImageResource(card.imageRes)
                 }
 

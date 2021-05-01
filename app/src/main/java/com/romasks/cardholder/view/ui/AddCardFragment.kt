@@ -10,13 +10,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.integration.android.IntentIntegrator
 import com.journeyapps.barcodescanner.BarcodeEncoder
+import com.romasks.cardholder.data.datasource.db.entities.Card
 import com.romasks.cardholder.databinding.FragmentAddCardBinding
-import com.romasks.cardholder.domain.entity.Card
 import com.romasks.cardholder.view.adapter.CardsAdapter
 import com.romasks.cardholder.view.utils.ScreenUtils
 import com.romasks.cardholder.view.vm.MainViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
-
 
 class AddCardFragment : Fragment(), CardsAdapter.ItemClickListener {
 

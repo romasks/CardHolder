@@ -9,6 +9,10 @@ object Versions {
         const val TOOLS_BUILD_GRADLE = "4.1.3"
     }
 
+    object Database {
+        const val ROOM = "2.3.0"
+    }
+
     object DI {
         const val KOIN = "2.2.2"
     }

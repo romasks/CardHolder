@@ -50,7 +50,12 @@ dependencies {
     implementation Libs.Android.KOTLIN_STDLIB
 
     // Async
-    // RxJava
+    // RxJava or Coroutines
+
+    // Database
+    kapt Libs.DB.ROOM_COMPILER
+    implementation Libs.DB.ROOM
+    implementation Libs.DB.ROOM_EXTENSIONS
 
     // DI
     implementation Libs.DI.KOIN_ANDROID
@@ -66,6 +71,7 @@ dependencies {
 
     // Testing
     testImplementation Libs.Testing.JUNIT
+    testImplementation Libs.Testing.ROOM_TESTING
     androidTestImplementation Libs.Testing.JUNIT_EXT
     androidTestImplementation Libs.Testing.ESPRESSO
 
