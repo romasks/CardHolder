@@ -1,5 +1,5 @@
 package com.romasks.cardholder.core
 
-enum class BarcodeFormat {
+enum class BarcodeScheme {
     EAN_13, CODE_128
 }

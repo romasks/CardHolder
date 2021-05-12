@@ -16,8 +16,7 @@ import androidx.room.PrimaryKey
 )
 data class Barcode(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
-    @ColumnInfo(name = "card_id", index = true)
-    val cardId: Int,
-    val barcode: String
+    val id: Int = 0,
+    @ColumnInfo(name = "card_id", index = true) val cardId: Int,
+    @ColumnInfo(name = "barcode") val barcode: String
 )

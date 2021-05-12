@@ -2,19 +2,14 @@ package com.romasks.cardholder.view.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.romasks.cardholder.R
 import com.romasks.cardholder.databinding.ActivityMainBinding
-import com.romasks.cardholder.view.vm.MainViewModel
-import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
-
-    private val viewModel by viewModel<MainViewModel>()
 
     private lateinit var binding: ActivityMainBinding
 

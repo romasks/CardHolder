@@ -15,14 +15,20 @@ interface CardsDao {
     @Query("SELECT * FROM card WHERE name LIKE :cardName")
     suspend fun getByName(cardName: String): List<Card>
 
-    @Insert
-    suspend fun insert(card: Card): Long
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(card: Card)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(cards: List<Card>)
 
     @Update
-    suspend fun update(card: Card): Int
+    suspend fun update(card: Card)
+
+    @Update
+    suspend fun updateAll(cards: List<Card>)
 
     @Delete
-    suspend fun delete(card: Card): Int
+    suspend fun delete(card: Card)
 
     @Query("DELETE FROM card")
     suspend fun clearAll(): Int

@@ -5,6 +5,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'kotlin-parcelize'
     id 'koin'
     id 'androidx.navigation.safeargs.kotlin'
 }
@@ -48,6 +49,7 @@ dependencies {
     implementation Libs.Android.APP_COMPAT
     implementation Libs.Android.CORE_KTX
     implementation Libs.Android.KOTLIN_STDLIB
+    implementation Libs.Android.LIFECYCLE_LIVE_DATA
 
     // Async
     // RxJava or Coroutines
@@ -77,8 +79,8 @@ dependencies {
 
     // UI
     implementation Libs.UI.CARD_VIEW
+    implementation Libs.UI.COIL
     implementation Libs.UI.CONSTRAINT_LAYOUT
-    implementation Libs.UI.GLIDE
     implementation Libs.UI.LOTTIE
     implementation Libs.UI.MATERIAL
     implementation Libs.UI.ZXING

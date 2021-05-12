@@ -7,6 +7,7 @@ object Libs {
         const val CORE_KTX = "androidx.core:core-ktx:${Versions.Android.CORE_KTX}"
         const val KOTLIN_STDLIB = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.Android.KOTLIN_VERSION}"
         const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Android.KOTLIN_VERSION}"
+        const val LIFECYCLE_LIVE_DATA = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Android.LIFECYCLE_LIVE_DATA}"
         const val TOOLS_BUILD_GRADLE = "com.android.tools.build:gradle:${Versions.Android.TOOLS_BUILD_GRADLE}"
     }
 
@@ -38,8 +39,8 @@ object Libs {
 
     object UI {
         const val CARD_VIEW = "androidx.cardview:cardview:${Versions.UI.CARD_VIEW}"
+        const val COIL = "io.coil-kt:coil:${Versions.UI.COIL}"
         const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.UI.CONSTRAINT_LAYOUT}"
-        const val GLIDE = "com.github.bumptech.glide:glide:${Versions.UI.GLIDE}"
         const val LOTTIE = "com.airbnb.android:lottie:${Versions.UI.LOTTIE}"
         const val MATERIAL = "com.google.android.material:material:${Versions.UI.MATERIAL}"
         const val ZXING = "com.journeyapps:zxing-android-embedded:${Versions.UI.ZXING}"

@@ -1,17 +1,25 @@
 package com.romasks.cardholder.domain.usecase
 
-import com.romasks.cardholder.data.datasource.db.entities.Card
 import com.romasks.cardholder.data.repository.CardsRepository
+import com.romasks.cardholder.domain.entity.Card
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class CollectCardsUseCase(private val cardsRepository: CardsRepository) {
 
-    fun getAllCards(): List<Card> {
-        val cards = cardsRepository.cards
-        return if (cards.isEmpty()) {
+    /*fun getAllCards(): LiveData<List<Card>> = liveData {
+        val cardsLiveData = cardsRepository.getAllCards()
+        emitSource(cardsLiveData.map { Card(it.id, it.name, it.imageUrl, it.scheme, it.bitmap) })
+    }*/
+
+    fun getAllCards() = cardsRepository.getAllCards().map {
+        Card(it.id, it.name, it.imageUrl, it.scheme, it.bitmap)
+    }
+
+    fun loadTestData() {
+        CoroutineScope(Dispatchers.IO).launch {
             cardsRepository.loadInitialCardsList()
-            cardsRepository.cards
-        } else {
-            cards
         }
     }
 }

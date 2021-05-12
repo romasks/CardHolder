@@ -13,9 +13,26 @@
 
     <fragment
         android:id="@+id/nav_add_card"
-        android:name="com.romasks.cardholder.view.ui.AddCardFragment"
-        android:label="@string/label_add_card"
-        tools:layout="@layout/fragment_add_card" />
+        android:name="com.romasks.cardholder.view.ui.SelectCardFragment"
+        android:label="@string/label_select_card"
+        tools:layout="@layout/fragment_select_card">
+        <action
+            android:id="@+id/action_open_newCardResultFragment"
+            app:destination="@id/newCardResultFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/newCardResultFragment"
+        android:name="com.romasks.cardholder.view.ui.NewCardResultFragment"
+        android:label="@string/label_new_card_result"
+        tools:layout="@layout/fragment_new_card_result" >
+        <argument
+            android:name="selectedCard"
+            app:argType="com.romasks.cardholder.domain.entity.Card" />
+        <action
+            android:id="@+id/action_newCardResultFragment_to_cards"
+            app:destination="@id/nav_cards" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_settings"

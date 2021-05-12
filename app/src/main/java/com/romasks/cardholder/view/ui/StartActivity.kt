@@ -4,11 +4,23 @@ import android.animation.Animator
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.romasks.cardholder.databinding.ActivityStartBinding
+import com.romasks.cardholder.view.vm.StartViewModel
+import kotlinx.coroutines.launch
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class StartActivity : AppCompatActivity() {
 
+    private val viewModel by viewModel<StartViewModel>()
+
     private lateinit var binding: ActivityStartBinding
+
+    init {
+        lifecycleScope.launchWhenStarted {
+            viewModel.loadTestData()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

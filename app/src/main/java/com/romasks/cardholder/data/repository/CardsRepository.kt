@@ -1,10 +1,19 @@
 package com.romasks.cardholder.data.repository
 
 import android.content.Context
-import com.romasks.cardholder.R
-import com.romasks.cardholder.core.BarcodeFormat
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.liveData
+import coil.ImageLoader
+import coil.request.ImageRequest
+import coil.request.SuccessResult
+import com.romasks.cardholder.core.BarcodeScheme
 import com.romasks.cardholder.data.datasource.db.dao.CardsDao
 import com.romasks.cardholder.data.datasource.db.entities.Card
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class CardsRepository(
@@ -12,17 +21,43 @@ class CardsRepository(
     private val dao: CardsDao
 ) {
 
-    val cards = runBlocking { dao.getAll() }
+//    suspend fun getAllCards(): List<Card> = dao.getAll()
+    fun getAllCards(): List<Card> = runBlocking { dao.getAll() }
 
-    fun insert(card: Card) = runBlocking { dao.insert(card) }
+    fun getAll(): List<Card> = runBlocking { dao.getAll() }
+
+    fun insertAll(cards: List<Card>) = runBlocking { dao.insertAll(cards) }
+
+    fun updateAll(cards: List<Card>) = runBlocking { dao.updateAll(cards) }
+
+    fun clearAll() = runBlocking { dao.clearAll() }
 
     fun loadInitialCardsList() {
         val res = context.resources
         // @formatter:off
-        insert(Card(1,"Belorusneft", res.getString(R.drawable.belorusneft), BarcodeFormat.EAN_13))
-        insert(Card(2, "Gazpromneft", res.getString(R.drawable.gazpromneft), BarcodeFormat.CODE_128))
-        insert(Card(3, "Mile", res.getString(R.drawable.mile), BarcodeFormat.EAN_13))
-        insert(Card(4, "Oma", res.getString(R.drawable.oma), BarcodeFormat.EAN_13))
+        clearAll()
+        insertAll(listOf(
+            Card(name = "Belorusneft", imageUrl = "https://dl.dropboxusercontent.com/s/px6jewcwo7aonzv/belorusneft.jpg?dl=0", scheme = BarcodeScheme.EAN_13),
+            Card(name = "Gazpromneft", imageUrl = "https://dl.dropboxusercontent.com/s/b4rn7c4v4vcy48m/gazpromneft.jpg?dl=0", scheme = BarcodeScheme.CODE_128),
+            Card(name = "Mile", imageUrl = "https://dl.dropboxusercontent.com/s/apx6mokbw3kfdd8/mile.jpg?dl=0", scheme = BarcodeScheme.EAN_13),
+            Card(name = "Oma", imageUrl = "https://dl.dropboxusercontent.com/s/up42yzul4uwbzrn/oma.jpg?dl=0", scheme = BarcodeScheme.EAN_13)
+        ))
+        updateAll(getAll().map { it.bitmap = loadImage(it.imageUrl); it })
         // @formatter:on
+    }
+
+    private fun loadImage(imageUrl: String): Bitmap? {
+        var bitmap: Bitmap? = null
+        CoroutineScope(Dispatchers.IO).launch {
+            val loader = ImageLoader(context)
+            val request = ImageRequest.Builder(context)
+                .data(imageUrl)
+                .allowHardware(false)
+                .build()
+
+            val result = (loader.execute(request) as SuccessResult).drawable
+            bitmap = (result as BitmapDrawable).bitmap
+        }
+        return bitmap
     }
 }

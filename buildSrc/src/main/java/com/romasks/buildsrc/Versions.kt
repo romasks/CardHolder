@@ -7,6 +7,7 @@ object Versions {
         const val CORE_KTX = "1.3.2"
         const val KOTLIN_VERSION = "1.4.21"
         const val TOOLS_BUILD_GRADLE = "4.1.3"
+        const val LIFECYCLE_LIVE_DATA = "2.3.1"
     }
 
     object Database {
@@ -29,8 +30,8 @@ object Versions {
 
     object UI {
         const val CARD_VIEW = "1.0.0"
+        const val COIL = "1.2.1"
         const val CONSTRAINT_LAYOUT = "2.0.4"
-        const val GLIDE = "4.11.0"
         const val LOTTIE = "3.7.0"
         const val MATERIAL = "1.3.0"
         const val ZXING = "4.2.0"

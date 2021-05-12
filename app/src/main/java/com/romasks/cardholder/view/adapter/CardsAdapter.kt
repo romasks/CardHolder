@@ -1,21 +1,22 @@
 package com.romasks.cardholder.view.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.romasks.cardholder.data.datasource.db.entities.Card
+import coil.load
 import com.romasks.cardholder.databinding.ItemCardBinding
+import com.romasks.cardholder.domain.entity.Card
 
-class CardsAdapter(cards: List<Card>) : RecyclerView.Adapter<CardsAdapter.CardHolder>() {
+class CardsAdapter(private val itemClickAction: (Card) -> Unit) :
+    RecyclerView.Adapter<CardsAdapter.CardHolder>() {
 
-    private lateinit var listener: ItemClickListener
-    private val items: List<Card> = cards
+    private val items = arrayListOf<Card>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemCardBinding.inflate(inflater, parent, false)
-        return CardHolder(binding, listener)
+        return CardHolder(binding, itemClickAction)
     }
 
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
@@ -26,38 +27,26 @@ class CardsAdapter(cards: List<Card>) : RecyclerView.Adapter<CardsAdapter.CardHo
 
     class CardHolder(
         private val binding: ItemCardBinding,
-        private val listener: ItemClickListener
+        private val itemClickAction: (Card) -> Unit
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(card: Card) {
             with(binding) {
+                Log.d("CARD", card.toString())
+
                 cardName.text = card.name
+                card.bitmap
+                    ?.let { cardImage.load(card.bitmap) }
+                    ?: cardImage.load(card.imageUrl)
 
-                val resize = false
-                if (resize) {
-                    /*cardImage.setImageBitmap(
-                        ImageUtils.getTransformedBitmap(root.resources, card.imageRes)
-                    )*/
-                } else {
-                    Glide.with(root).load(card.image).into(cardImage)
-//                    cardImage.setImageResource(card.imageRes)
-                }
-
-                root.setOnClickListener {
-                    // listener.onItemClick(it, adapterPosition)
-                    listener.onItemClick(card)
-                }
+                root.setOnClickListener { itemClickAction(card) }
             }
         }
     }
 
-    fun setClickListener(itemClickListener: ItemClickListener) {
-        listener = itemClickListener
-    }
-
-    interface ItemClickListener {
-        // fun onItemClick(view: View?, position: Int)
-        fun onItemClick(card: Card)
+    fun setItems(cards: List<Card>?) {
+        cards?.let { items.addAll(it) } ?: items.clear()
+        notifyDataSetChanged()
     }
 }
