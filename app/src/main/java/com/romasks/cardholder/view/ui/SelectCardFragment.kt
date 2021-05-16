@@ -34,10 +34,10 @@ class SelectCardFragment : Fragment() {
         setAdapter()
 
         viewModel.selectedCard.observe(viewLifecycleOwner) { card ->
-            if (card != null) {
-                val bundle = bundleOf("selectedCard" to card)
+            card?.let {
+                val bundle = bundleOf("selectedCard" to it)
                 findNavController().navigate(R.id.action_open_newCardResultFragment, bundle)
-                viewModel.selectedCard.value = null
+                viewModel.clearSelectedCard()
             }
         }
     }

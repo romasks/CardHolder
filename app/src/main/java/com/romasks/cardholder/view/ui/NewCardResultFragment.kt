@@ -61,13 +61,13 @@ class NewCardResultFragment : Fragment() {
         viewModel.navigateBack.observe(viewLifecycleOwner) { back ->
             if (back) {
                 findNavController().popBackStack()
-                viewModel.navigateBack.value = false
+                viewModel.onNavigateBack()
             }
         }
         viewModel.cardSaved.observe(viewLifecycleOwner) { saved ->
             if (saved) {
                 findNavController().navigate(R.id.action_newCardResultFragment_to_cards)
-                viewModel.cardSaved.value = false
+                viewModel.onNavigateNext()
             }
         }
     }

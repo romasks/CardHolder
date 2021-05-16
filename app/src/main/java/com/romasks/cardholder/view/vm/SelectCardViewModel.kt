@@ -9,19 +9,31 @@ class SelectCardViewModel(
     private val collectCardsUseCase: CollectCardsUseCase
 ) : ViewModel() {
 
-    val cards = MutableLiveData<List<Card>>()
-    val isNoCards = MutableLiveData(true)
+    private val _cards = MutableLiveData<List<Card>>()
+    private val _selectedCard = MutableLiveData<Card?>()
 
-    val selectedCard = MutableLiveData<Card>()
+    val cards: LiveData<List<Card>>
+        get() = _cards
+
+    val isNoCards: LiveData<Boolean>
+        get() = liveData {
+            _cards.value?.isEmpty()
+        }
+
+    val selectedCard: LiveData<Card?>
+        get() = _selectedCard
 
     init {
         viewModelScope.launch {
-            cards.value = collectCardsUseCase.getAllCards()
-            isNoCards.value = cards.value?.isEmpty() ?: true
+            _cards.postValue(collectCardsUseCase.getAllCards())
         }
     }
 
     fun selectCard(card: Card) {
-        selectedCard.value = card
+        _selectedCard.postValue(card)
+    }
+
+    fun clearSelectedCard() {
+        _selectedCard.value = null
     }
 }

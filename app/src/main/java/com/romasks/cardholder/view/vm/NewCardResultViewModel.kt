@@ -1,39 +1,59 @@
 package com.romasks.cardholder.view.vm
 
-import android.graphics.Bitmap
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.romasks.cardholder.domain.entity.Card
 import com.romasks.cardholder.domain.usecase.SaveBarcodeUseCase
+import kotlinx.coroutines.launch
 
 class NewCardResultViewModel(
     private val saveBarcodeUseCase: SaveBarcodeUseCase
 ) : ViewModel() {
 
-    val selectedCard = MutableLiveData<Card>()
+    private val _selectedCard = MutableLiveData<Card>()
+    private val _navigateBack = MutableLiveData(false)
+    private val _cardSaved = MutableLiveData(false)
 
-    val barcode = MutableLiveData<String>()
-    val barcodeBitmap = MutableLiveData<Bitmap>()
+    val selectedCard: LiveData<Card>
+        get() = _selectedCard
 
-    val navigateBack = MutableLiveData(false)
-    val cardSaved = MutableLiveData(false)
+    val barcode = saveBarcodeUseCase.barcode
+    val barcodeBitmap = saveBarcodeUseCase.barcodeBitmap
+
+    val navigateBack: LiveData<Boolean>
+        get() = _navigateBack
+
+    val cardSaved: LiveData<Boolean>
+        get() = _cardSaved
 
     fun setSelectedCard(card: Card) {
-        selectedCard.value = card
+        _selectedCard.postValue(card)
     }
 
     fun generateBarcodeBitmap(code: String, imageWidth: Int) {
-        barcode.value = code
-        barcodeBitmap.value =
+        viewModelScope.launch {
             saveBarcodeUseCase.generateBarcodeBitmap(code, selectedCard.value!!.scheme, imageWidth)
+        }
     }
 
     fun cancel() {
-        navigateBack.value = true
+        _navigateBack.postValue(true)
     }
 
     fun saveCard() {
-        saveBarcodeUseCase.saveNewBarcode(selectedCard.value!!.id, barcode.value!!)
-        cardSaved.value = true
+        viewModelScope.launch {
+            saveBarcodeUseCase.saveNewBarcode(selectedCard.value!!.id, barcode.value!!)
+            _cardSaved.postValue(true)
+        }
+    }
+
+    fun onNavigateBack() {
+        _navigateBack.postValue(false)
+    }
+
+    fun onNavigateNext() {
+        _cardSaved.postValue(false)
     }
 }
