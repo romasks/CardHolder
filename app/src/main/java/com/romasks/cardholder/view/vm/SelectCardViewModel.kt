@@ -6,7 +6,7 @@ import com.romasks.cardholder.domain.usecase.CollectCardsUseCase
 import kotlinx.coroutines.launch
 
 class SelectCardViewModel(
-    private val collectCardsUseCase: CollectCardsUseCase
+    private val useCase: CollectCardsUseCase
 ) : ViewModel() {
 
     private val _cards = MutableLiveData<List<Card>>()
@@ -25,7 +25,7 @@ class SelectCardViewModel(
 
     init {
         viewModelScope.launch {
-            _cards.postValue(collectCardsUseCase.getAllCards())
+            _cards.postValue(useCase.getAllCards())
         }
     }
 

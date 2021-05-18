@@ -1,5 +1,6 @@
 package com.romasks.cardholder.data.datasource.db.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.romasks.cardholder.data.datasource.db.entities.Card
 
@@ -7,7 +8,10 @@ import com.romasks.cardholder.data.datasource.db.entities.Card
 interface CardsDao {
 
     @Query("SELECT * FROM card")
-    suspend fun getAll(): List<Card>
+    fun getAll(): LiveData<List<Card>>
+
+    @Query("SELECT * FROM card")
+    suspend fun getCardsList(): List<Card>
 
     @Query("SELECT * FROM card WHERE id == :id")
     suspend fun getById(id: Int): Card

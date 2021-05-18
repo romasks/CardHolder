@@ -6,20 +6,20 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class CollectCardsUseCase(private val cardsRepository: CardsRepository) {
+class CollectCardsUseCase(private val repository: CardsRepository) {
 
     /*fun getAllCards(): LiveData<List<Card>> = liveData {
         val cardsLiveData = cardsRepository.getAllCards()
         emitSource(cardsLiveData.map { Card(it.id, it.name, it.imageUrl, it.scheme, it.bitmap) })
     }*/
 
-    fun getAllCards() = cardsRepository.getAllCards().map {
+    fun getAllCards() = repository.getAllCards().map {
         Card(it.id, it.name, it.imageUrl, it.scheme, it.bitmap)
     }
 
     fun loadTestData() {
         CoroutineScope(Dispatchers.IO).launch {
-            cardsRepository.loadInitialCardsList()
+            repository.loadInitialCardsList()
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.romasks.cardholder.data.datasource.db.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.romasks.cardholder.data.datasource.db.entities.Barcode
 
@@ -7,7 +8,10 @@ import com.romasks.cardholder.data.datasource.db.entities.Barcode
 interface BarcodesDao {
 
     @Query("SELECT * FROM barcode")
-    suspend fun getAll(): List<Barcode>
+    fun getAll(): LiveData<List<Barcode>>
+
+    @Query("SELECT * FROM barcode")
+    suspend fun getBarcodesList(): List<Barcode>
 
     @Query("SELECT * FROM barcode WHERE id == :id")
     suspend fun getById(id: Int): Barcode

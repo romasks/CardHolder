@@ -3,8 +3,6 @@ package com.romasks.cardholder.data.repository
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.liveData
 import coil.ImageLoader
 import coil.request.ImageRequest
 import coil.request.SuccessResult
@@ -21,10 +19,10 @@ class CardsRepository(
     private val dao: CardsDao
 ) {
 
-//    suspend fun getAllCards(): List<Card> = dao.getAll()
-    fun getAllCards(): List<Card> = runBlocking { dao.getAll() }
+    //    val cards = liveData { emitSource(dao.getAll()) }
+    val cards = dao.getAll()
 
-    fun getAll(): List<Card> = runBlocking { dao.getAll() }
+    fun getAllCards(): List<Card> = runBlocking { dao.getCardsList() }
 
     fun insertAll(cards: List<Card>) = runBlocking { dao.insertAll(cards) }
 
@@ -42,7 +40,7 @@ class CardsRepository(
             Card(name = "Mile", imageUrl = "https://dl.dropboxusercontent.com/s/apx6mokbw3kfdd8/mile.jpg?dl=0", scheme = BarcodeScheme.EAN_13),
             Card(name = "Oma", imageUrl = "https://dl.dropboxusercontent.com/s/up42yzul4uwbzrn/oma.jpg?dl=0", scheme = BarcodeScheme.EAN_13)
         ))
-        updateAll(getAll().map { it.bitmap = loadImage(it.imageUrl); it })
+        updateAll(getAllCards().map { it.bitmap = loadImage(it.imageUrl); it })
         // @formatter:on
     }
 

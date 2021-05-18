@@ -9,7 +9,7 @@ import com.romasks.cardholder.domain.usecase.SaveBarcodeUseCase
 import kotlinx.coroutines.launch
 
 class NewCardResultViewModel(
-    private val saveBarcodeUseCase: SaveBarcodeUseCase
+    private val useCase: SaveBarcodeUseCase
 ) : ViewModel() {
 
     private val _selectedCard = MutableLiveData<Card>()
@@ -19,8 +19,8 @@ class NewCardResultViewModel(
     val selectedCard: LiveData<Card>
         get() = _selectedCard
 
-    val barcode = saveBarcodeUseCase.barcode
-    val barcodeBitmap = saveBarcodeUseCase.barcodeBitmap
+    val barcode = useCase.barcode
+    val barcodeBitmap = useCase.barcodeBitmap
 
     val navigateBack: LiveData<Boolean>
         get() = _navigateBack
@@ -34,7 +34,7 @@ class NewCardResultViewModel(
 
     fun generateBarcodeBitmap(code: String, imageWidth: Int) {
         viewModelScope.launch {
-            saveBarcodeUseCase.generateBarcodeBitmap(code, selectedCard.value!!.scheme, imageWidth)
+            useCase.generateBarcodeBitmap(code, selectedCard.value!!.scheme, imageWidth)
         }
     }
 
@@ -44,7 +44,7 @@ class NewCardResultViewModel(
 
     fun saveCard() {
         viewModelScope.launch {
-            saveBarcodeUseCase.saveNewBarcode(selectedCard.value!!.id, barcode.value!!)
+            useCase.saveNewBarcode(selectedCard.value!!.id, barcode.value!!)
             _cardSaved.postValue(true)
         }
     }
