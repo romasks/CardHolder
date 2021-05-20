@@ -23,7 +23,7 @@ class SaveBarcodeUseCase(private val barcodesRepository: BarcodesRepository) {
     val barcodeBitmap: LiveData<Bitmap>
         get() = _barcodeBitmap
 
-    fun saveNewBarcode(cardId: Int, barcode: String) {
+    suspend fun saveNewBarcode(cardId: Int, barcode: String) {
         barcodesRepository.insert(
             Barcode(cardId = cardId, barcode = barcode)
         )
