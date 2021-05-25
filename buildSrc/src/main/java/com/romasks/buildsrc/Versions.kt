@@ -23,9 +23,11 @@ object Versions {
     }
 
     object Testing {
+        const val CORE = "2.1.0"
         const val ESPRESSO = "3.3.0"
         const val JUNIT = "4.13.2"
         const val JUNIT_EXT = "1.1.2"
+        const val TRUTH = "1.0.1"
     }
 
     object UI {

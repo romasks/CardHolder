@@ -31,10 +31,12 @@ object Libs {
     }
 
     object Testing {
+        const val CORE = "androidx.arch.core:core-testing:${Versions.Testing.CORE}"
         const val ESPRESSO = "androidx.test.espresso:espresso-core:${Versions.Testing.ESPRESSO}"
         const val JUNIT = "junit:junit:${Versions.Testing.JUNIT}"
         const val JUNIT_EXT = "androidx.test.ext:junit:${Versions.Testing.JUNIT_EXT}"
         const val ROOM_TESTING = "androidx.room:room-testing:${Versions.Database.ROOM}"
+        const val TRUTH = "com.google.truth:truth:${Versions.Testing.TRUTH}"
     }
 
     object UI {

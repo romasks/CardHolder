@@ -72,8 +72,10 @@ dependencies {
     // Retrofit
 
     // Testing
+    testImplementation Libs.Testing.CORE
     testImplementation Libs.Testing.JUNIT
     testImplementation Libs.Testing.ROOM_TESTING
+    testImplementation Libs.Testing.TRUTH
     androidTestImplementation Libs.Testing.JUNIT_EXT
     androidTestImplementation Libs.Testing.ESPRESSO
 
