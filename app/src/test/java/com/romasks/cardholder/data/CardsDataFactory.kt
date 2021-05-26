@@ -1,9 +1,9 @@
-package com.romasks.cardholder.view.vm
+package com.romasks.cardholder.data
 
 import com.romasks.cardholder.core.BarcodeScheme
 import com.romasks.cardholder.domain.entity.Card
 
-val cardsList: List<Card> = listOf(
+val cardsWithBarcodesList: List<Card> = listOf(
   Card(
     id = 1,
     name = "Belorusneft",

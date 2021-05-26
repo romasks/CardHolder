@@ -80,6 +80,7 @@ dependencies {
     testImplementation Libs.Testing.ROOM_TESTING
     testImplementation Libs.Testing.TRUTH
 
+    androidTestImplementation Libs.Testing.CORE
     androidTestImplementation Libs.Testing.ESPRESSO
     androidTestImplementation Libs.Testing.JUNIT
     androidTestImplementation Libs.Testing.JUNIT_EXT

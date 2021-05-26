@@ -2,6 +2,7 @@ package com.romasks.cardholder.view.vm
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
+import com.romasks.cardholder.data.cardsWithBarcodesList
 import com.romasks.cardholder.data.repository.FakeCardsRepository
 import com.romasks.cardholder.domain.usecase.CollectCardsUseCase
 import com.romasks.cardholder.getOrAwaitValue
@@ -46,7 +47,7 @@ class SelectCardViewModelTest {
 
   @Test
   fun getCards_updateLiveData() {
-    assertThat(viewModel.cards.getOrAwaitValue()).isEqualTo(cardsList)
+    assertThat(viewModel.cards.getOrAwaitValue()).isEqualTo(cardsWithBarcodesList)
   }
 
 }
