@@ -73,11 +73,17 @@ dependencies {
 
     // Testing
     testImplementation Libs.Testing.CORE
+    testImplementation Libs.Testing.COROUTINES
     testImplementation Libs.Testing.JUNIT
+    testImplementation Libs.Testing.JUNIT_EXT
+    testImplementation Libs.Testing.MOCKITO
     testImplementation Libs.Testing.ROOM_TESTING
     testImplementation Libs.Testing.TRUTH
-    androidTestImplementation Libs.Testing.JUNIT_EXT
+
     androidTestImplementation Libs.Testing.ESPRESSO
+    androidTestImplementation Libs.Testing.JUNIT
+    androidTestImplementation Libs.Testing.JUNIT_EXT
+    androidTestImplementation Libs.Testing.TRUTH
 
     // UI
     implementation Libs.UI.CARD_VIEW

@@ -5,7 +5,7 @@ object Versions {
     object Android {
         const val APP_COMPAT = "1.2.0"
         const val CORE_KTX = "1.3.2"
-        const val KOTLIN_VERSION = "1.4.21"
+        const val KOTLIN_VERSION = "1.5.0"
         const val TOOLS_BUILD_GRADLE = "4.1.3"
         const val LIFECYCLE_LIVE_DATA = "2.3.1"
     }
@@ -27,6 +27,7 @@ object Versions {
         const val ESPRESSO = "3.3.0"
         const val JUNIT = "4.13.2"
         const val JUNIT_EXT = "1.1.2"
+        const val MOCKITO = "3.10.0"
         const val TRUTH = "1.0.1"
     }
 
