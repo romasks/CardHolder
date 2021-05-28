@@ -1,13 +1,13 @@
 package com.romasks.cardholder.view.vm
 
 import androidx.lifecycle.*
+import com.romasks.cardholder.domain.binder.ICollectSavedCardsUseCase
 import com.romasks.cardholder.domain.entity.SavedCard
-import com.romasks.cardholder.domain.usecase.CollectSavedCardsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOn
 
 class SavedCardsViewModel(
-  private val useCase: CollectSavedCardsUseCase
+  private val useCase: ICollectSavedCardsUseCase
 ) : ViewModel() {
 
   private val _selectedCard = MutableLiveData<SavedCard?>()

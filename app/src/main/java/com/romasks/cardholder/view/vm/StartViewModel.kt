@@ -1,10 +1,10 @@
 package com.romasks.cardholder.view.vm
 
 import androidx.lifecycle.ViewModel
-import com.romasks.cardholder.domain.usecase.LoadTestDataUseCase
+import com.romasks.cardholder.domain.binder.ILoadTestDataUseCase
 
 class StartViewModel(
-  private val useCase: LoadTestDataUseCase
+  private val useCase: ILoadTestDataUseCase
 ) : ViewModel() {
 
   fun loadTestData() {

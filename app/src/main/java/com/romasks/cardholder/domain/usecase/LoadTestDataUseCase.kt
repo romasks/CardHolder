@@ -7,7 +7,8 @@ import coil.ImageLoader
 import coil.request.ImageRequest
 import coil.request.SuccessResult
 import com.romasks.cardholder.core.BarcodeScheme
-import com.romasks.cardholder.data.repository.ICardsRepository
+import com.romasks.cardholder.data.binder.ICardsRepository
+import com.romasks.cardholder.domain.binder.ILoadTestDataUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,9 +16,9 @@ import kotlinx.coroutines.launch
 class LoadTestDataUseCase(
   private val context: Context,
   private val repository: ICardsRepository
-) {
+) : ILoadTestDataUseCase {
 
-  fun loadTestData() {
+  override fun loadTestData() {
     CoroutineScope(Dispatchers.IO).launch {
       loadInitialCardsList()
     }

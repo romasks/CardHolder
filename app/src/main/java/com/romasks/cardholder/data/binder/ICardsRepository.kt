@@ -1,4 +1,4 @@
-package com.romasks.cardholder.data.repository
+package com.romasks.cardholder.data.binder
 
 import com.romasks.cardholder.data.datasource.db.entities.Card
 import kotlinx.coroutines.flow.Flow
